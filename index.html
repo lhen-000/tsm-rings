@@ -3,9 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: sans-serif; font-size: 16px; background: transparent; padding: 0; margin: 0; }
+  body { font-family: 'Open Sans', Arial, sans-serif; font-size: 16px; font-weight: 500; background: transparent; padding: 0; margin: 0; overflow: hidden; }
 
   .tsm-tabs { display: flex; gap: 10px; margin-bottom: 16px; max-width: 480px; }
 
@@ -14,17 +15,17 @@
     border: 2px solid #e6e6e6; background: #fff;
     font-size: 16px; font-weight: 700; cursor: pointer;
     transition: background 0.2s, border-color 0.2s, color 0.2s;
-    color: #3c3c3b; font-family: sans-serif;
+    color: #3c3c3b; font-family: 'Open Sans', Arial, sans-serif;
   }
   .tsm-tab-btn.active-settle   { background: #ff9000; border-color: #ff9000; color: #3c3c3b; }
   .tsm-tab-btn.active-paradigm { background: #009bbb; border-color: #009bbb; color: #fff; }
 
-  .tsm-panel { display: none; gap: 28px; justify-content: flex-start; flex-wrap: wrap; max-width: 480px; }
+  .tsm-panel { display: none; gap: 28px; justify-content: flex-start; flex-wrap: wrap; max-width: 480px; margin-bottom: 0; }
   .tsm-panel.active { display: flex; }
 
   .tsm-ring-wrap { display: flex; flex-direction: column; align-items: center; gap: 6px; }
-  .tsm-ring-lbl  { font-size: 16px; font-weight: 700; color: #3c3c3b; }
-  .tsm-ring-sub  { font-size: 13px; color: #888; }
+  .tsm-ring-lbl  { font-size: 16px; font-weight: 700; color: #3c3c3b; font-family: 'Open Sans', Arial, sans-serif; }
+  .tsm-ring-sub  { font-size: 13px; color: #888; font-family: 'Open Sans', Arial, sans-serif; }
 
   .tsm-ring-box { position: relative; width: 110px; height: 110px; }
   .tsm-ring-box svg { transform: rotate(-90deg); display: block; }
@@ -33,7 +34,7 @@
     position: absolute; inset: 0;
     display: flex; align-items: center; justify-content: center;
     font-size: 1.5rem; font-weight: 800; line-height: 1;
-    font-family: sans-serif;
+    font-family: 'Open Sans', Arial, sans-serif;
   }
   .tsm-ring-txt small { font-size: 0.85rem; font-weight: 700; }
 

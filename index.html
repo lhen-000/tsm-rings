@@ -3,42 +3,44 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: Arial, sans-serif; background: transparent; padding: 4px 0; }
+  body { font-family: 'Open Sans', Arial, sans-serif; font-size: 18px; background: transparent; padding: 0; margin: 0; }
 
-  .tsm-tabs { display: flex; gap: 10px; margin-bottom: 28px; max-width: 560px; }
+  .tsm-tabs { display: flex; gap: 10px; margin-bottom: 20px; max-width: 520px; }
 
   .tsm-tab-btn {
-    flex: 1; padding: 12px 20px; border-radius: 999px;
+    flex: 1; padding: 10px 20px; border-radius: 999px;
     border: 2px solid #e6e6e6; background: #fff;
-    font-size: 1rem; font-weight: 700; cursor: pointer;
+    font-size: 18px; font-weight: 700; cursor: pointer;
     transition: background 0.2s, border-color 0.2s, color 0.2s;
-    color: #3c3c3b; font-family: inherit;
+    color: #3c3c3b; font-family: 'Open Sans', Arial, sans-serif;
   }
-  .tsm-tab-btn.active-settle   { background: #ff9000; border-color: #ff9000; color: #fff; }
+  .tsm-tab-btn.active-settle   { background: #ff9000; border-color: #ff9000; color: #3c3c3b; }
   .tsm-tab-btn.active-paradigm { background: #009bbb; border-color: #009bbb; color: #fff; }
 
-  .tsm-panel { display: none; gap: 40px; justify-content: center; flex-wrap: wrap; max-width: 560px; }
+  .tsm-panel { display: none; gap: 32px; justify-content: flex-start; flex-wrap: wrap; max-width: 520px; }
   .tsm-panel.active { display: flex; }
 
-  .tsm-ring-wrap { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-  .tsm-ring-lbl  { font-size: 1rem; font-weight: 700; color: #3c3c3b; }
-  .tsm-ring-sub  { font-size: 0.8rem; color: #888; }
+  .tsm-ring-wrap { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .tsm-ring-lbl  { font-size: 18px; font-weight: 700; color: #3c3c3b; }
+  .tsm-ring-sub  { font-size: 14px; color: #888; }
 
-  .tsm-ring-box { position: relative; width: 140px; height: 140px; }
+  .tsm-ring-box { position: relative; width: 120px; height: 120px; }
   .tsm-ring-box svg { transform: rotate(-90deg); display: block; }
 
   .tsm-ring-txt {
     position: absolute; inset: 0;
     display: flex; align-items: center; justify-content: center;
-    font-size: 1.75rem; font-weight: 800; line-height: 1;
+    font-size: 1.6rem; font-weight: 800; line-height: 1;
+    font-family: 'Open Sans', Arial, sans-serif;
   }
-  .tsm-ring-txt small { font-size: 1rem; font-weight: 700; }
+  .tsm-ring-txt small { font-size: 0.9rem; font-weight: 700; }
 
   .tsm-arc {
     fill: none; stroke-linecap: round;
-    stroke-dasharray: 364.4; stroke-dashoffset: 364.4;
+    stroke-dasharray: 314.2; stroke-dashoffset: 314.2;
     transition: stroke-dashoffset 1.4s cubic-bezier(.4,0,.2,1);
   }
 </style>
@@ -54,24 +56,24 @@
   <div class="tsm-ring-wrap">
     <div class="tsm-ring-lbl">Trust</div>
     <div class="tsm-ring-box">
-      <svg width="140" height="140" viewBox="0 0 140 140">
-        <circle fill="none" stroke="#e6e6e6" stroke-width="12" cx="70" cy="70" r="58"/>
-        <circle id="arc-st" class="tsm-arc" stroke="#ff9000" stroke-width="12" cx="70" cy="70" r="58"/>
+      <svg width="120" height="120" viewBox="0 0 120 120">
+        <circle fill="none" stroke="#e6e6e6" stroke-width="11" cx="60" cy="60" r="50"/>
+        <circle id="arc-st" class="tsm-arc" stroke="#ff9000" stroke-width="11" cx="60" cy="60" r="50"/>
       </svg>
       <div class="tsm-ring-txt" style="color:#ff9000"><span id="num-st">0</span><small>%</small></div>
     </div>
-    <div class="tsm-ring-sub">Jun–Dec 2025</div>
+    <div class="tsm-ring-sub">Jun-Dec 2025</div>
   </div>
   <div class="tsm-ring-wrap">
     <div class="tsm-ring-lbl">Ease</div>
     <div class="tsm-ring-box">
-      <svg width="140" height="140" viewBox="0 0 140 140">
-        <circle fill="none" stroke="#e6e6e6" stroke-width="12" cx="70" cy="70" r="58"/>
-        <circle id="arc-se" class="tsm-arc" stroke="#ff9000" stroke-width="12" cx="70" cy="70" r="58"/>
+      <svg width="120" height="120" viewBox="0 0 120 120">
+        <circle fill="none" stroke="#e6e6e6" stroke-width="11" cx="60" cy="60" r="50"/>
+        <circle id="arc-se" class="tsm-arc" stroke="#ff9000" stroke-width="11" cx="60" cy="60" r="50"/>
       </svg>
       <div class="tsm-ring-txt" style="color:#ff9000"><span id="num-se">0</span><small>%</small></div>
     </div>
-    <div class="tsm-ring-sub">Jun–Dec 2025</div>
+    <div class="tsm-ring-sub">Jun-Dec 2025</div>
   </div>
 </div>
 
@@ -79,24 +81,24 @@
   <div class="tsm-ring-wrap">
     <div class="tsm-ring-lbl">Trust</div>
     <div class="tsm-ring-box">
-      <svg width="140" height="140" viewBox="0 0 140 140">
-        <circle fill="none" stroke="#e6e6e6" stroke-width="12" cx="70" cy="70" r="58"/>
-        <circle id="arc-pt" class="tsm-arc" stroke="#009bbb" stroke-width="12" cx="70" cy="70" r="58"/>
+      <svg width="120" height="120" viewBox="0 0 120 120">
+        <circle fill="none" stroke="#e6e6e6" stroke-width="11" cx="60" cy="60" r="50"/>
+        <circle id="arc-pt" class="tsm-arc" stroke="#009bbb" stroke-width="11" cx="60" cy="60" r="50"/>
       </svg>
       <div class="tsm-ring-txt" style="color:#009bbb"><span id="num-pt">0</span><small>%</small></div>
     </div>
-    <div class="tsm-ring-sub">Jun–Dec 2025</div>
+    <div class="tsm-ring-sub">Jun-Dec 2025</div>
   </div>
   <div class="tsm-ring-wrap">
     <div class="tsm-ring-lbl">Ease</div>
     <div class="tsm-ring-box">
-      <svg width="140" height="140" viewBox="0 0 140 140">
-        <circle fill="none" stroke="#e6e6e6" stroke-width="12" cx="70" cy="70" r="58"/>
-        <circle id="arc-pe" class="tsm-arc" stroke="#009bbb" stroke-width="12" cx="70" cy="70" r="58"/>
+      <svg width="120" height="120" viewBox="0 0 120 120">
+        <circle fill="none" stroke="#e6e6e6" stroke-width="11" cx="60" cy="60" r="50"/>
+        <circle id="arc-pe" class="tsm-arc" stroke="#009bbb" stroke-width="11" cx="60" cy="60" r="50"/>
       </svg>
       <div class="tsm-ring-txt" style="color:#009bbb"><span id="num-pe">0</span><small>%</small></div>
     </div>
-    <div class="tsm-ring-sub">Jun–Dec 2025</div>
+    <div class="tsm-ring-sub">Jun-Dec 2025</div>
   </div>
 </div>
 
@@ -107,7 +109,7 @@
     paradigm: { trust: 78, ease: 74 }
   };
 
-  var C = 364.4;
+  var C = 314.2;
   var timers = [];
 
   function offset(pct) { return C - (pct / 100 * C); }

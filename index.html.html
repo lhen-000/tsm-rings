@@ -1,11 +1,11 @@
-<iframe id="tsm-iframe" scrolling="no" style="width:100%;border:none;display:block;" srcdoc="
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset='utf-8'>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: inherit; background: transparent; padding: 4px 0; }
+  body { font-family: Arial, sans-serif; background: transparent; padding: 4px 0; }
 
   .tsm-tabs { display: flex; gap: 10px; margin-bottom: 28px; max-width: 560px; }
 
@@ -45,58 +45,58 @@
 </head>
 <body>
 
-<div class='tsm-tabs'>
-  <button id='btn-settle'   class='tsm-tab-btn active-settle'   onclick='showTab(&apos;settle&apos;)'>Settle</button>
-  <button id='btn-paradigm' class='tsm-tab-btn'                 onclick='showTab(&apos;paradigm&apos;)'>Paradigm</button>
+<div class="tsm-tabs">
+  <button id="btn-settle"   class="tsm-tab-btn active-settle"   onclick="showTab('settle')">Settle</button>
+  <button id="btn-paradigm" class="tsm-tab-btn"                 onclick="showTab('paradigm')">Paradigm</button>
 </div>
 
-<div id='panel-settle' class='tsm-panel active'>
-  <div class='tsm-ring-wrap'>
-    <div class='tsm-ring-lbl'>Trust</div>
-    <div class='tsm-ring-box'>
-      <svg width='140' height='140' viewBox='0 0 140 140'>
-        <circle fill='none' stroke='#e6e6e6' stroke-width='12' cx='70' cy='70' r='58'/>
-        <circle id='arc-st' class='tsm-arc' stroke='#ff9000' stroke-width='12' cx='70' cy='70' r='58'/>
+<div id="panel-settle" class="tsm-panel active">
+  <div class="tsm-ring-wrap">
+    <div class="tsm-ring-lbl">Trust</div>
+    <div class="tsm-ring-box">
+      <svg width="140" height="140" viewBox="0 0 140 140">
+        <circle fill="none" stroke="#e6e6e6" stroke-width="12" cx="70" cy="70" r="58"/>
+        <circle id="arc-st" class="tsm-arc" stroke="#ff9000" stroke-width="12" cx="70" cy="70" r="58"/>
       </svg>
-      <div class='tsm-ring-txt' style='color:#ff9000'><span id='num-st'>0</span><small>%</small></div>
+      <div class="tsm-ring-txt" style="color:#ff9000"><span id="num-st">0</span><small>%</small></div>
     </div>
-    <div class='tsm-ring-sub'>Jun&ndash;Dec 2025</div>
+    <div class="tsm-ring-sub">Jun–Dec 2025</div>
   </div>
-  <div class='tsm-ring-wrap'>
-    <div class='tsm-ring-lbl'>Ease</div>
-    <div class='tsm-ring-box'>
-      <svg width='140' height='140' viewBox='0 0 140 140'>
-        <circle fill='none' stroke='#e6e6e6' stroke-width='12' cx='70' cy='70' r='58'/>
-        <circle id='arc-se' class='tsm-arc' stroke='#ff9000' stroke-width='12' cx='70' cy='70' r='58'/>
+  <div class="tsm-ring-wrap">
+    <div class="tsm-ring-lbl">Ease</div>
+    <div class="tsm-ring-box">
+      <svg width="140" height="140" viewBox="0 0 140 140">
+        <circle fill="none" stroke="#e6e6e6" stroke-width="12" cx="70" cy="70" r="58"/>
+        <circle id="arc-se" class="tsm-arc" stroke="#ff9000" stroke-width="12" cx="70" cy="70" r="58"/>
       </svg>
-      <div class='tsm-ring-txt' style='color:#ff9000'><span id='num-se'>0</span><small>%</small></div>
+      <div class="tsm-ring-txt" style="color:#ff9000"><span id="num-se">0</span><small>%</small></div>
     </div>
-    <div class='tsm-ring-sub'>Jun&ndash;Dec 2025</div>
+    <div class="tsm-ring-sub">Jun–Dec 2025</div>
   </div>
 </div>
 
-<div id='panel-paradigm' class='tsm-panel'>
-  <div class='tsm-ring-wrap'>
-    <div class='tsm-ring-lbl'>Trust</div>
-    <div class='tsm-ring-box'>
-      <svg width='140' height='140' viewBox='0 0 140 140'>
-        <circle fill='none' stroke='#e6e6e6' stroke-width='12' cx='70' cy='70' r='58'/>
-        <circle id='arc-pt' class='tsm-arc' stroke='#009bbb' stroke-width='12' cx='70' cy='70' r='58'/>
+<div id="panel-paradigm" class="tsm-panel">
+  <div class="tsm-ring-wrap">
+    <div class="tsm-ring-lbl">Trust</div>
+    <div class="tsm-ring-box">
+      <svg width="140" height="140" viewBox="0 0 140 140">
+        <circle fill="none" stroke="#e6e6e6" stroke-width="12" cx="70" cy="70" r="58"/>
+        <circle id="arc-pt" class="tsm-arc" stroke="#009bbb" stroke-width="12" cx="70" cy="70" r="58"/>
       </svg>
-      <div class='tsm-ring-txt' style='color:#009bbb'><span id='num-pt'>0</span><small>%</small></div>
+      <div class="tsm-ring-txt" style="color:#009bbb"><span id="num-pt">0</span><small>%</small></div>
     </div>
-    <div class='tsm-ring-sub'>Jun&ndash;Dec 2025</div>
+    <div class="tsm-ring-sub">Jun–Dec 2025</div>
   </div>
-  <div class='tsm-ring-wrap'>
-    <div class='tsm-ring-lbl'>Ease</div>
-    <div class='tsm-ring-box'>
-      <svg width='140' height='140' viewBox='0 0 140 140'>
-        <circle fill='none' stroke='#e6e6e6' stroke-width='12' cx='70' cy='70' r='58'/>
-        <circle id='arc-pe' class='tsm-arc' stroke='#009bbb' stroke-width='12' cx='70' cy='70' r='58'/>
+  <div class="tsm-ring-wrap">
+    <div class="tsm-ring-lbl">Ease</div>
+    <div class="tsm-ring-box">
+      <svg width="140" height="140" viewBox="0 0 140 140">
+        <circle fill="none" stroke="#e6e6e6" stroke-width="12" cx="70" cy="70" r="58"/>
+        <circle id="arc-pe" class="tsm-arc" stroke="#009bbb" stroke-width="12" cx="70" cy="70" r="58"/>
       </svg>
-      <div class='tsm-ring-txt' style='color:#009bbb'><span id='num-pe'>0</span><small>%</small></div>
+      <div class="tsm-ring-txt" style="color:#009bbb"><span id="num-pe">0</span><small>%</small></div>
     </div>
-    <div class='tsm-ring-sub'>Jun&ndash;Dec 2025</div>
+    <div class="tsm-ring-sub">Jun–Dec 2025</div>
   </div>
 </div>
 
@@ -137,15 +137,12 @@
     timers.forEach(clearInterval);
     timers = [];
 
-    // Buttons — use IDs, no fragile attribute selector
     document.getElementById('btn-settle').className   = 'tsm-tab-btn' + (org === 'settle'   ? ' active-settle'   : '');
     document.getElementById('btn-paradigm').className = 'tsm-tab-btn' + (org === 'paradigm' ? ' active-paradigm' : '');
 
-    // Panels
     document.getElementById('panel-settle').classList.toggle('active',   org === 'settle');
     document.getElementById('panel-paradigm').classList.toggle('active', org === 'paradigm');
 
-    // Animate
     var s = scores[org];
     var p = org === 'settle' ? 's' : 'p';
     setTimeout(function() {
@@ -154,19 +151,9 @@
       animateNum('num-' + p + 't', s.trust);
       animateNum('num-' + p + 'e', s.ease);
     }, 50);
-
-    resizeIframe();
-  }
-
-  function resizeIframe() {
-    try {
-      var h = document.body.scrollHeight;
-      parent.document.getElementById('tsm-iframe').style.height = (h + 20) + 'px';
-    } catch(e) {}
   }
 
   window.onload = function() {
-    resizeIframe();
     setTimeout(function() {
       animateArc('arc-st', scores.settle.trust);
       animateArc('arc-se', scores.settle.ease);
@@ -177,4 +164,3 @@
 </script>
 </body>
 </html>
-"></iframe>

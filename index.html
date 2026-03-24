@@ -260,6 +260,16 @@
   window.onload = function() {
     setTimeout(function() { animateOrg('settle'); }, 400);
   };
+  function resizeIframe() {
+  try {
+    var h = document.body.scrollHeight;
+    parent.document.querySelector('iframe').style.height = (h + 20) + 'px';
+  } catch(e) {}
+}
+
+window.addEventListener('resize', resizeIframe);
+setTimeout(resizeIframe, 500);
+setTimeout(resizeIframe, 1500);
 </script>
 </body>
 </html>

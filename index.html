@@ -98,7 +98,7 @@
   .tsm-bar-sub { font-size: 12px; color: #888; font-family: 'Open Sans', Arial, sans-serif; }
 
   /* ── MOBILE: switch rings→bars ── */
-  @media (max-width: 480px) {
+  @media (max-width: 600px) {
     .tsm-rings-row  { display: none !important; }
     .tsm-paradigm-row { display: none !important; }
     .tsm-bars { display: flex !important; }
@@ -260,7 +260,7 @@
 
   function offset(pct) { return C - (pct / 100 * C); }
 
-  function isMobile() { return window.innerWidth <= 480; }
+  function isMobile() { return window.innerWidth <= 600; }
 
   function animateArc(id, pct) {
     var el = document.getElementById(id);

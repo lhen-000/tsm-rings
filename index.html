@@ -18,7 +18,7 @@
     font-weight: 700;
     font-stretch: 100%;
     src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTS-muw.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2215, U+FEFF, U+FFFD;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -51,7 +51,6 @@
   }
 
   .tsm-rings-row { display: flex; flex-wrap: wrap; gap: 20px; }
-
   .tsm-ring-wrap { display: flex; flex-direction: column; align-items: center; gap: 6px; }
   .tsm-ring-lbl  { font-size: 15px; font-weight: 700; color: #3c3c3b; font-family: 'Open Sans', Arial, sans-serif; }
   .tsm-ring-sub  { font-size: 13px; color: #888; font-family: 'Open Sans', Arial, sans-serif; }
@@ -59,27 +58,23 @@
   .tsm-ring-box { position: relative; width: 100px; height: 100px; }
   .tsm-ring-box svg { transform: rotate(-90deg); display: block; }
 
-  /* Centering fix — table-cell method works across all browsers */
+  /* Centering: use grid which is bulletproof */
   .tsm-ring-txt {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    display: table-cell;
-    text-align: center;
-    vertical-align: middle;
-  }
-  .tsm-ring-txt-inner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0; left: 0;
-    font-size: 1.4rem; font-weight: 800; line-height: 1;
+    display: grid;
+    place-items: center;
+    font-size: 1.3rem; font-weight: 800; line-height: 1;
     font-family: 'Open Sans', Arial, sans-serif;
     font-feature-settings: "ss01";
   }
-  .tsm-ring-txt-inner small { font-size: 0.8rem; font-weight: 700; }
+  /* Number and % sit together as one inline unit */
+  .tsm-ring-txt .pct-wrap {
+    display: flex;
+    align-items: baseline;
+    gap: 1px;
+  }
+  .tsm-ring-txt .pct-wrap small { font-size: 0.75rem; font-weight: 700; }
 
   .tsm-arc {
     fill: none; stroke-linecap: round;
@@ -94,7 +89,7 @@
     .tsm-rings-row { gap: 14px; }
     .tsm-paradigm-row { gap: 20px; }
     .tsm-ring-box { width: 90px; height: 90px; }
-    .tsm-ring-txt-inner { font-size: 1.2rem; }
+    .tsm-ring-txt { font-size: 1.1rem; }
   }
 </style>
 </head>
@@ -117,8 +112,8 @@
             <circle fill="none" stroke="#e6e6e6" stroke-width="10" cx="50" cy="50" r="42"/>
             <circle id="arc-s-gn-t" class="tsm-arc" stroke="#ff9000" stroke-width="10" cx="50" cy="50" r="42"/>
           </svg>
-          <div class="tsm-ring-txt">
-            <div class="tsm-ring-txt-inner" style="color:#ff9000"><span id="num-s-gn-t">0</span><small>%</small></div>
+          <div class="tsm-ring-txt" style="color:#ff9000">
+            <div class="pct-wrap"><span id="num-s-gn-t">0</span><small>%</small></div>
           </div>
         </div>
         <div class="tsm-ring-sub">Jun-Dec 2025</div>
@@ -130,8 +125,8 @@
             <circle fill="none" stroke="#e6e6e6" stroke-width="10" cx="50" cy="50" r="42"/>
             <circle id="arc-s-gn-e" class="tsm-arc" stroke="#3c3c3b" stroke-width="10" cx="50" cy="50" r="42"/>
           </svg>
-          <div class="tsm-ring-txt">
-            <div class="tsm-ring-txt-inner" style="color:#3c3c3b"><span id="num-s-gn-e">0</span><small>%</small></div>
+          <div class="tsm-ring-txt" style="color:#3c3c3b">
+            <div class="pct-wrap"><span id="num-s-gn-e">0</span><small>%</small></div>
           </div>
         </div>
         <div class="tsm-ring-sub">Jun-Dec 2025</div>
@@ -153,8 +148,8 @@
               <circle fill="none" stroke="#e6e6e6" stroke-width="10" cx="50" cy="50" r="42"/>
               <circle id="arc-p-gn-t" class="tsm-arc" stroke="#009bbb" stroke-width="10" cx="50" cy="50" r="42"/>
             </svg>
-            <div class="tsm-ring-txt">
-              <div class="tsm-ring-txt-inner" style="color:#009bbb"><span id="num-p-gn-t">0</span><small>%</small></div>
+            <div class="tsm-ring-txt" style="color:#009bbb">
+              <div class="pct-wrap"><span id="num-p-gn-t">0</span><small>%</small></div>
             </div>
           </div>
           <div class="tsm-ring-sub">Jun-Dec 2025</div>
@@ -166,8 +161,8 @@
               <circle fill="none" stroke="#e6e6e6" stroke-width="10" cx="50" cy="50" r="42"/>
               <circle id="arc-p-gn-e" class="tsm-arc" stroke="#824bb0" stroke-width="10" cx="50" cy="50" r="42"/>
             </svg>
-            <div class="tsm-ring-txt">
-              <div class="tsm-ring-txt-inner" style="color:#824bb0"><span id="num-p-gn-e">0</span><small>%</small></div>
+            <div class="tsm-ring-txt" style="color:#824bb0">
+              <div class="pct-wrap"><span id="num-p-gn-e">0</span><small>%</small></div>
             </div>
           </div>
           <div class="tsm-ring-sub">Jun-Dec 2025</div>
@@ -185,8 +180,8 @@
               <circle fill="none" stroke="#e6e6e6" stroke-width="10" cx="50" cy="50" r="42"/>
               <circle id="arc-p-so-t" class="tsm-arc" stroke="#009bbb" stroke-width="10" cx="50" cy="50" r="42"/>
             </svg>
-            <div class="tsm-ring-txt">
-              <div class="tsm-ring-txt-inner" style="color:#009bbb"><span id="num-p-so-t">0</span><small>%</small></div>
+            <div class="tsm-ring-txt" style="color:#009bbb">
+              <div class="pct-wrap"><span id="num-p-so-t">0</span><small>%</small></div>
             </div>
           </div>
           <div class="tsm-ring-sub">Jun-Dec 2025</div>
@@ -198,8 +193,8 @@
               <circle fill="none" stroke="#e6e6e6" stroke-width="10" cx="50" cy="50" r="42"/>
               <circle id="arc-p-so-e" class="tsm-arc" stroke="#824bb0" stroke-width="10" cx="50" cy="50" r="42"/>
             </svg>
-            <div class="tsm-ring-txt">
-              <div class="tsm-ring-txt-inner" style="color:#824bb0"><span id="num-p-so-e">0</span><small>%</small></div>
+            <div class="tsm-ring-txt" style="color:#824bb0">
+              <div class="pct-wrap"><span id="num-p-so-e">0</span><small>%</small></div>
             </div>
           </div>
           <div class="tsm-ring-sub">Jun-Dec 2025</div>
@@ -263,8 +258,14 @@
 
   function resizeIframe() {
     try {
-      var h = document.body.scrollHeight;
-      parent.document.querySelector('iframe').style.height = (h + 20) + 'px';
+      // Try window.frameElement first — most reliable
+      var frame = window.frameElement;
+      if (frame) {
+        frame.style.height = (document.body.scrollHeight + 20) + 'px';
+        return;
+      }
+      // Fallback to querySelector
+      parent.document.querySelector('iframe').style.height = (document.body.scrollHeight + 20) + 'px';
     } catch(e) {}
   }
 
@@ -276,14 +277,17 @@
     document.getElementById('panel-settle').classList.toggle('active',   org === 'settle');
     document.getElementById('panel-paradigm').classList.toggle('active', org === 'paradigm');
     setTimeout(function() { animateOrg(org); }, 50);
-    setTimeout(resizeIframe, 100);
+    setTimeout(resizeIframe, 150);
+    setTimeout(resizeIframe, 500);
   }
 
   window.onload = function() {
     setTimeout(function() { animateOrg('settle'); }, 400);
   };
 
-  window.addEventListener('resize', resizeIframe);
+  window.addEventListener('resize', function() {
+    setTimeout(resizeIframe, 150);
+  });
   setTimeout(resizeIframe, 500);
   setTimeout(resizeIframe, 1500);
 </script>

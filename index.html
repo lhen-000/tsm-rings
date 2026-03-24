@@ -4,7 +4,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-  /* Load exact same Open Sans v44 latin subset as the CMS */
   @font-face {
     font-family: 'Open Sans';
     font-style: normal;
@@ -23,41 +22,64 @@
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Open Sans', Arial, sans-serif; font-size: 16px; font-weight: 400; background: transparent; padding: 0; margin: 0; overflow: hidden; font-feature-settings: "ss01"; }
-  .tsm-tabs { display: flex; gap: 10px; margin-bottom: 16px; max-width: 480px; }
+  body {
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 16px; font-weight: 400;
+    background: transparent; padding: 0; margin: 0; overflow: hidden;
+    font-feature-settings: "ss01";
+  }
 
+  .tsm-tabs { display: flex; gap: 10px; margin-bottom: 16px; max-width: 480px; }
   .tsm-tab-btn {
     flex: 1; padding: 8px 16px; border-radius: 999px;
     border: 2px solid #e6e6e6; background: #fff;
     font-size: 16px; font-weight: 700; cursor: pointer;
     transition: background 0.2s, border-color 0.2s, color 0.2s;
     color: #3c3c3b; font-family: 'Open Sans', Arial, sans-serif;
+    font-feature-settings: "ss01";
   }
   .tsm-tab-btn.active-settle   { background: #ff9000; border-color: #ff9000; color: #3c3c3b; }
   .tsm-tab-btn.active-paradigm { background: #009bbb; border-color: #009bbb; color: #fff; }
 
-  .tsm-panel { display: none; gap: 28px; justify-content: flex-start; flex-wrap: wrap; max-width: 480px; }
+  .tsm-panel { display: none; flex-direction: column; gap: 20px; max-width: 560px; }
   .tsm-panel.active { display: flex; }
 
+  .tsm-group { display: flex; flex-direction: column; gap: 8px; }
+  .tsm-group-lbl {
+    font-size: 14px; font-weight: 700; color: #3c3c3b;
+    
+    font-family: 'Open Sans', Arial, sans-serif;
+  }
+  .tsm-rings-row { display: flex; flex-wrap: wrap; gap: 20px; }
+
   .tsm-ring-wrap { display: flex; flex-direction: column; align-items: center; gap: 6px; }
-  .tsm-ring-lbl  { font-size: 16px; font-weight: 700; color: #3c3c3b; font-family: 'Open Sans', Arial, sans-serif; }
+  .tsm-ring-lbl  { font-size: 15px; font-weight: 700; color: #3c3c3b; font-family: 'Open Sans', Arial, sans-serif; }
   .tsm-ring-sub  { font-size: 13px; color: #888; font-family: 'Open Sans', Arial, sans-serif; }
 
-  .tsm-ring-box { position: relative; width: 110px; height: 110px; }
+  .tsm-ring-box { position: relative; width: 100px; height: 100px; }
   .tsm-ring-box svg { transform: rotate(-90deg); display: block; }
 
   .tsm-ring-txt {
     position: absolute; inset: 0;
     display: flex; align-items: center; justify-content: center;
-    font-size: 1.5rem; font-weight: 800; line-height: 1;
+    font-size: 1.4rem; font-weight: 800; line-height: 1;
     font-family: 'Open Sans', Arial, sans-serif;
+    font-feature-settings: "ss01";
   }
-  .tsm-ring-txt small { font-size: 0.85rem; font-weight: 700; }
+  .tsm-ring-txt small { font-size: 0.8rem; font-weight: 700; }
 
   .tsm-arc {
     fill: none; stroke-linecap: round;
-    stroke-dasharray: 295.3; stroke-dashoffset: 295.3;
+    stroke-dasharray: 263.9; stroke-dashoffset: 263.9;
     transition: stroke-dashoffset 1.4s cubic-bezier(.4,0,.2,1);
+  }
+
+  .tsm-divider { border: none; border-top: 1px solid #e6e6e6; margin: 0; }
+
+  @media (max-width: 400px) {
+    .tsm-rings-row { gap: 14px; }
+    .tsm-ring-box { width: 90px; height: 90px; }
+    .tsm-ring-txt { font-size: 1.2rem; }
   }
 </style>
 </head>
@@ -68,63 +90,111 @@
   <button id="btn-paradigm" class="tsm-tab-btn"                 onclick="showTab('paradigm')">Paradigm</button>
 </div>
 
+<!-- SETTLE: General needs only -->
 <div id="panel-settle" class="tsm-panel active">
-  <div class="tsm-ring-wrap">
-    <div class="tsm-ring-lbl">Trust</div>
-    <div class="tsm-ring-box">
-      <svg width="110" height="110" viewBox="0 0 110 110">
-        <circle fill="none" stroke="#e6e6e6" stroke-width="10" cx="55" cy="55" r="47"/>
-        <circle id="arc-st" class="tsm-arc" stroke="#ff9000" stroke-width="10" cx="55" cy="55" r="47"/>
-      </svg>
-      <div class="tsm-ring-txt" style="color:#ff9000"><span id="num-st">0</span><small>%</small></div>
+  <div class="tsm-group">
+    <div class="tsm-group-lbl">General needs</div>
+    <div class="tsm-rings-row">
+      <div class="tsm-ring-wrap">
+        <div class="tsm-ring-lbl">Trust</div>
+        <div class="tsm-ring-box">
+          <svg width="100" height="100" viewBox="0 0 100 100">
+            <circle fill="none" stroke="#e6e6e6" stroke-width="10" cx="50" cy="50" r="42"/>
+            <circle id="arc-s-gn-t" class="tsm-arc" stroke="#ff9000" stroke-width="10" cx="50" cy="50" r="42"/>
+          </svg>
+          <div class="tsm-ring-txt" style="color:#ff9000"><span id="num-s-gn-t">0</span><small>%</small></div>
+        </div>
+        <div class="tsm-ring-sub">Jun-Dec 2025</div>
+      </div>
+      <div class="tsm-ring-wrap">
+        <div class="tsm-ring-lbl">Ease</div>
+        <div class="tsm-ring-box">
+          <svg width="100" height="100" viewBox="0 0 100 100">
+            <circle fill="none" stroke="#e6e6e6" stroke-width="10" cx="50" cy="50" r="42"/>
+            <circle id="arc-s-gn-e" class="tsm-arc" stroke="#3c3c3b" stroke-width="10" cx="50" cy="50" r="42"/>
+          </svg>
+          <div class="tsm-ring-txt" style="color:#3c3c3b"><span id="num-s-gn-e">0</span><small>%</small></div>
+        </div>
+        <div class="tsm-ring-sub">Jun-Dec 2025</div>
+      </div>
     </div>
-    <div class="tsm-ring-sub">Jun-Dec 2025</div>
-  </div>
-  <div class="tsm-ring-wrap">
-    <div class="tsm-ring-lbl">Ease</div>
-    <div class="tsm-ring-box">
-      <svg width="110" height="110" viewBox="0 0 110 110">
-        <circle fill="none" stroke="#e6e6e6" stroke-width="10" cx="55" cy="55" r="47"/>
-        <circle id="arc-se" class="tsm-arc" stroke="#ff9000" stroke-width="10" cx="55" cy="55" r="47"/>
-      </svg>
-      <div class="tsm-ring-txt" style="color:#ff9000"><span id="num-se">0</span><small>%</small></div>
-    </div>
-    <div class="tsm-ring-sub">Jun-Dec 2025</div>
   </div>
 </div>
 
+<!-- PARADIGM: General needs + Shared owners -->
 <div id="panel-paradigm" class="tsm-panel">
-  <div class="tsm-ring-wrap">
-    <div class="tsm-ring-lbl">Trust</div>
-    <div class="tsm-ring-box">
-      <svg width="110" height="110" viewBox="0 0 110 110">
-        <circle fill="none" stroke="#e6e6e6" stroke-width="10" cx="55" cy="55" r="47"/>
-        <circle id="arc-pt" class="tsm-arc" stroke="#009bbb" stroke-width="10" cx="55" cy="55" r="47"/>
-      </svg>
-      <div class="tsm-ring-txt" style="color:#009bbb"><span id="num-pt">0</span><small>%</small></div>
+  <div class="tsm-group">
+    <div class="tsm-group-lbl">General needs</div>
+    <div class="tsm-rings-row">
+      <div class="tsm-ring-wrap">
+        <div class="tsm-ring-lbl">Trust</div>
+        <div class="tsm-ring-box">
+          <svg width="100" height="100" viewBox="0 0 100 100">
+            <circle fill="none" stroke="#e6e6e6" stroke-width="10" cx="50" cy="50" r="42"/>
+            <circle id="arc-p-gn-t" class="tsm-arc" stroke="#009bbb" stroke-width="10" cx="50" cy="50" r="42"/>
+          </svg>
+          <div class="tsm-ring-txt" style="color:#009bbb"><span id="num-p-gn-t">0</span><small>%</small></div>
+        </div>
+        <div class="tsm-ring-sub">Jun-Dec 2025</div>
+      </div>
+      <div class="tsm-ring-wrap">
+        <div class="tsm-ring-lbl">Ease</div>
+        <div class="tsm-ring-box">
+          <svg width="100" height="100" viewBox="0 0 100 100">
+            <circle fill="none" stroke="#e6e6e6" stroke-width="10" cx="50" cy="50" r="42"/>
+            <circle id="arc-p-gn-e" class="tsm-arc" stroke="#824bb0" stroke-width="10" cx="50" cy="50" r="42"/>
+          </svg>
+          <div class="tsm-ring-txt" style="color:#824bb0"><span id="num-p-gn-e">0</span><small>%</small></div>
+        </div>
+        <div class="tsm-ring-sub">Jun-Dec 2025</div>
+      </div>
     </div>
-    <div class="tsm-ring-sub">Jun-Dec 2025</div>
   </div>
-  <div class="tsm-ring-wrap">
-    <div class="tsm-ring-lbl">Ease</div>
-    <div class="tsm-ring-box">
-      <svg width="110" height="110" viewBox="0 0 110 110">
-        <circle fill="none" stroke="#e6e6e6" stroke-width="10" cx="55" cy="55" r="47"/>
-        <circle id="arc-pe" class="tsm-arc" stroke="#009bbb" stroke-width="10" cx="55" cy="55" r="47"/>
-      </svg>
-      <div class="tsm-ring-txt" style="color:#009bbb"><span id="num-pe">0</span><small>%</small></div>
+
+  <hr class="tsm-divider">
+
+  <div class="tsm-group">
+    <div class="tsm-group-lbl">Shared owners</div>
+    <div class="tsm-rings-row">
+      <div class="tsm-ring-wrap">
+        <div class="tsm-ring-lbl">Trust</div>
+        <div class="tsm-ring-box">
+          <svg width="100" height="100" viewBox="0 0 100 100">
+            <circle fill="none" stroke="#e6e6e6" stroke-width="10" cx="50" cy="50" r="42"/>
+            <circle id="arc-p-so-t" class="tsm-arc" stroke="#009bbb" stroke-width="10" cx="50" cy="50" r="42"/>
+          </svg>
+          <div class="tsm-ring-txt" style="color:#009bbb"><span id="num-p-so-t">0</span><small>%</small></div>
+        </div>
+        <div class="tsm-ring-sub">Jun-Dec 2025</div>
+      </div>
+      <div class="tsm-ring-wrap">
+        <div class="tsm-ring-lbl">Ease</div>
+        <div class="tsm-ring-box">
+          <svg width="100" height="100" viewBox="0 0 100 100">
+            <circle fill="none" stroke="#e6e6e6" stroke-width="10" cx="50" cy="50" r="42"/>
+            <circle id="arc-p-so-e" class="tsm-arc" stroke="#824bb0" stroke-width="10" cx="50" cy="50" r="42"/>
+          </svg>
+          <div class="tsm-ring-txt" style="color:#824bb0"><span id="num-p-so-e">0</span><small>%</small></div>
+        </div>
+        <div class="tsm-ring-sub">Jun-Dec 2025</div>
+      </div>
     </div>
-    <div class="tsm-ring-sub">Jun-Dec 2025</div>
   </div>
 </div>
 
 <script>
+  // *** UPDATE SCORES HERE ***
   var scores = {
-    settle:   { trust: 72, ease: 68 },
-    paradigm: { trust: 78, ease: 74 }
+    settle: {
+      gn: { trust: 72, ease: 68 }   // General needs only
+    },
+    paradigm: {
+      gn: { trust: 78, ease: 74 },  // General needs
+      so: { trust: 70, ease: 66 }   // Shared owners
+    }
   };
 
-  var C = 295.3;
+  var C = 263.9;
   var timers = [];
 
   function offset(pct) { return C - (pct / 100 * C); }
@@ -150,6 +220,21 @@
     timers.push(t);
   }
 
+  function animateOrg(org) {
+    var p = org === 'settle' ? 's' : 'p';
+    var s = scores[org];
+    animateArc('arc-' + p + '-gn-t', s.gn.trust);
+    animateArc('arc-' + p + '-gn-e', s.gn.ease);
+    animateNum('num-' + p + '-gn-t', s.gn.trust);
+    animateNum('num-' + p + '-gn-e', s.gn.ease);
+    if (s.so) {
+      animateArc('arc-' + p + '-so-t', s.so.trust);
+      animateArc('arc-' + p + '-so-e', s.so.ease);
+      animateNum('num-' + p + '-so-t', s.so.trust);
+      animateNum('num-' + p + '-so-e', s.so.ease);
+    }
+  }
+
   function showTab(org) {
     timers.forEach(clearInterval);
     timers = [];
@@ -160,23 +245,11 @@
     document.getElementById('panel-settle').classList.toggle('active',   org === 'settle');
     document.getElementById('panel-paradigm').classList.toggle('active', org === 'paradigm');
 
-    var s = scores[org];
-    var p = org === 'settle' ? 's' : 'p';
-    setTimeout(function() {
-      animateArc('arc-' + p + 't', s.trust);
-      animateArc('arc-' + p + 'e', s.ease);
-      animateNum('num-' + p + 't', s.trust);
-      animateNum('num-' + p + 'e', s.ease);
-    }, 50);
+    setTimeout(function() { animateOrg(org); }, 50);
   }
 
   window.onload = function() {
-    setTimeout(function() {
-      animateArc('arc-st', scores.settle.trust);
-      animateArc('arc-se', scores.settle.ease);
-      animateNum('num-st', scores.settle.trust);
-      animateNum('num-se', scores.settle.ease);
-    }, 400);
+    setTimeout(function() { animateOrg('settle'); }, 400);
   };
 </script>
 </body>
